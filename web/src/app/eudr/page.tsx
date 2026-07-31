@@ -1,7 +1,10 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
 import { AppShell } from "@/components/AppShell";
 import { DemoFlowNav } from "@/components/DemoFlowNav";
+import { useDemoToast } from "@/components/DemoToast";
 import { DegradationHotspotCompare } from "@/components/DegradationOverlay";
 import {
   ddsDocuments,
@@ -12,6 +15,7 @@ import {
   getLandUseAnalysis,
   getLandUseByLot,
 } from "@/data/mock";
+import { downloadJson, downloadText } from "@/lib/demo";
 
 const statusStyles: Record<string, string> = {
   준비중: "bg-bg text-muted",
@@ -32,10 +36,72 @@ export default function EudrPage() {
   const riskFarm = getLandUseAnalysis("farm-003");
   const before = landUse?.series.find((s) => s.year === 2021);
   const after = landUse?.series.find((s) => s.year === 2025);
+  const { toast, node } = useDemoToast();
+
+  function downloadDds() {
+    if (!featuredDds) return;
+    downloadJson(`kijanify-dds-${featuredDds.lotId}.json`, {
+      document: featuredDds,
+      compliance: eudrCompliance,
+      landUse: landUse
+        ? {
+            farmId: landUse.farmId,
+            eudrDeforestationFree: landUse.eudrDeforestationFree,
+            deforestationAfterCutoffHa: landUse.deforestationAfterCutoffHa,
+            summary: landUse.summary,
+          }
+        : null,
+      cutoff: "2020-12-31",
+      exportedAt: new Date().toISOString(),
+      disclaimer: "Prototype mock — not a legal DDS submission",
+    });
+    toast("DDS 보고서를 다운로드했습니다 (시연)");
+  }
+
+  function downloadChecklist() {
+    const lines = [
+      "KIJANIFY EUDR Checklist (prototype)",
+      `Lot: ${featuredLotId}`,
+      `Commodity: ${eudrCompliance.commodity}`,
+      `Origin: ${eudrCompliance.originCountry}`,
+      "",
+      ...eudrCompliance.checklist.map(
+        (c) => `- [${c.done ? "x" : " "}] ${c.item}`,
+      ),
+      "",
+      `Exported: ${new Date().toISOString()}`,
+    ];
+    downloadText(`kijanify-eudr-checklist-${featuredLotId}.txt`, lines.join("\n"));
+    toast("EUDR 체크리스트를 다운로드했습니다 (시연)");
+  }
 
   return (
-    <AppShell title="EUDR·DDS" subtitle="Due Diligence Statement · EU 규정 준수">
+    <AppShell
+      title="EUDR·DDS"
+      subtitle="Due Diligence Statement · EU 규정 준수"
+      actions={
+        <div className="flex gap-2">
+          <button
+            type="button"
+            onClick={downloadChecklist}
+            className="rounded-lg border border-line px-3 py-2 text-sm"
+          >
+            체크리스트
+          </button>
+          {featuredDds ? (
+            <button
+              type="button"
+              onClick={downloadDds}
+              className="rounded-lg bg-brand px-3 py-2 text-sm font-medium text-white"
+            >
+              DDS 다운로드
+            </button>
+          ) : null}
+        </div>
+      }
+    >
       <DemoFlowNav current="eudr" />
+      {node}
 
       <section className="mb-6 rounded-xl border border-brand/30 bg-brand-soft p-5">
         <p className="text-xs font-medium text-brand">
@@ -148,8 +214,15 @@ export default function EudrPage() {
 
       {featuredDds ? (
         <section className="mb-6 overflow-hidden rounded-xl border border-line bg-surface">
-          <div className="border-b border-line px-4 py-3">
+          <div className="flex items-center justify-between gap-3 border-b border-line px-4 py-3">
             <h3 className="text-sm font-semibold">DDS 보고서</h3>
+            <button
+              type="button"
+              onClick={downloadDds}
+              className="rounded-md border border-line px-2.5 py-1 text-xs font-medium hover:bg-bg"
+            >
+              JSON 내보내기
+            </button>
           </div>
           <div className="grid gap-4 p-4 sm:grid-cols-2 lg:grid-cols-3">
             <div>

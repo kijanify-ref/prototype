@@ -1,7 +1,10 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
 import { AppShell } from "@/components/AppShell";
 import { DemoFlowNav } from "@/components/DemoFlowNav";
+import { useDemoToast } from "@/components/DemoToast";
 import { SatelliteTimeline } from "@/components/SatelliteTimeline";
 import {
   carbonResults,
@@ -11,14 +14,58 @@ import {
   getLandUseByLot,
   getProducer,
 } from "@/data/mock";
+import { downloadJson } from "@/lib/demo";
 
 export default function CarbonPage() {
   const featured = getCarbonResult(featuredLotId);
   const landUse = featured ? getLandUseByLot(featured.lotId) : undefined;
+  const { toast, node } = useDemoToast();
+
+  function downloadResult() {
+    if (!featured) return;
+    downloadJson(`kijanify-carbon-${featured.lotId}.json`, {
+      ...featured,
+      landUseSummary: landUse
+        ? {
+            farmId: landUse.farmId,
+            deforestationAfterCutoffHa: landUse.deforestationAfterCutoffHa,
+            lucAnnualCo2eKg: landUse.lucAnnualCo2eKg,
+            eudrDeforestationFree: landUse.eudrDeforestationFree,
+          }
+        : null,
+      emissionFactors,
+      exportedAt: new Date().toISOString(),
+      note: "KIJANIFY prototype export — not for regulatory submission",
+    });
+    toast("탄소 산출 결과를 JSON으로 다운로드했습니다 (시연)");
+  }
+
+  function downloadFactors() {
+    downloadJson("kijanify-emission-factors.json", {
+      factors: emissionFactors,
+      exportedAt: new Date().toISOString(),
+    });
+    toast("배출계수 목록을 다운로드했습니다 (시연)");
+  }
 
   return (
-    <AppShell title="탄소" subtitle="운영 배출 + 5년 LUC · 배출계수">
+    <AppShell
+      title="탄소"
+      subtitle="운영 배출 + 5년 LUC · 배출계수"
+      actions={
+        featured ? (
+          <button
+            type="button"
+            onClick={downloadResult}
+            className="rounded-lg bg-brand px-3 py-2 text-sm font-medium text-white"
+          >
+            결과 다운로드
+          </button>
+        ) : null
+      }
+    >
       <DemoFlowNav current="carbon" />
+      {node}
 
       {featured ? (
         <section className="mb-6 rounded-xl border border-brand/30 bg-brand-soft p-5">
@@ -199,8 +246,15 @@ export default function CarbonPage() {
       </section>
 
       <section className="mt-6 overflow-hidden rounded-xl border border-line bg-surface">
-        <div className="border-b border-line px-4 py-3">
+        <div className="flex items-center justify-between gap-3 border-b border-line px-4 py-3">
           <h3 className="text-sm font-semibold">배출계수</h3>
+          <button
+            type="button"
+            onClick={downloadFactors}
+            className="rounded-md border border-line px-2.5 py-1 text-xs font-medium hover:bg-bg"
+          >
+            계수 다운로드
+          </button>
         </div>
         <table className="w-full text-left text-sm">
           <thead className="bg-bg text-xs text-muted">

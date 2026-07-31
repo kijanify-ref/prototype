@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import {
   ClipboardCheck,
   Factory,
@@ -16,6 +16,7 @@ import {
   Users,
   Map,
 } from "lucide-react";
+import { useDemoToast } from "./DemoToast";
 
 const navGroups = [
   {
@@ -62,9 +63,22 @@ function isActive(pathname: string, href: string) {
 
 export function Sidebar() {
   const pathname = usePathname();
+  const router = useRouter();
+  const { toast, node } = useDemoToast();
+
+  function endSession() {
+    try {
+      localStorage.removeItem("kijanify-demo-session");
+    } catch {
+      /* ignore */
+    }
+    toast("세션을 종료하고 현황으로 이동합니다");
+    window.setTimeout(() => router.push("/"), 400);
+  }
 
   return (
     <aside className="flex h-full w-56 shrink-0 flex-col border-r border-line bg-surface">
+      {node}
       <div className="flex h-14 shrink-0 items-center gap-2.5 border-b border-line px-4">
         <div className="flex h-7 w-7 items-center justify-center rounded-md bg-brand text-[10px] font-bold text-white">
           KJ
@@ -115,7 +129,8 @@ export function Sidebar() {
         </div>
         <button
           type="button"
-          className="flex w-full items-center justify-center gap-2 rounded-md border border-line px-3 py-2 text-sm text-muted"
+          onClick={endSession}
+          className="flex w-full items-center justify-center gap-2 rounded-md border border-line px-3 py-2 text-sm text-muted hover:bg-bg"
         >
           <LogOut size={15} />
           세션 종료

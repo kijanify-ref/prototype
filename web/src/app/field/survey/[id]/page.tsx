@@ -13,6 +13,8 @@ import {
   getSurvey,
   getValidations,
 } from "@/data/mock";
+import { saveOfflineDemo } from "@/lib/demo";
+import { useDemoToast } from "@/components/DemoToast";
 
 export default function FieldSurveyPage({
   params,
@@ -30,20 +32,32 @@ export default function FieldSurveyPage({
     shade: "",
   });
   const validations = getValidations(id);
+  const { toast, node } = useDemoToast();
 
   function markDone(key: string) {
     setSteps((prev) =>
-      prev.map((s, i) => {
+      prev.map((s) => {
         if (s.key !== key) return s;
-        const next = prev[i + 1];
         return { ...s, status: "완료" as const };
       }).map((s, i, arr) => {
-        const prevDone = i === 0 || arr[i - 1].status === "완료";
-        if (s.status === "대기" && prevDone && arr[i - 1]?.status === "완료") {
+        if (s.status === "대기" && arr[i - 1]?.status === "완료") {
           return { ...s, status: "진행" as const };
         }
         return s;
       }),
+    );
+  }
+
+  function saveOffline() {
+    const ok = saveOfflineDemo(`kijanify-survey-${id}`, {
+      surveyId: id,
+      steps,
+      practice,
+    });
+    toast(
+      ok
+        ? "오프라인 캐시에 저장했습니다 · 네트워크 복구 시 동기화 (시연)"
+        : "저장 공간을 사용할 수 없습니다",
     );
   }
 
@@ -59,6 +73,7 @@ export default function FieldSurveyPage({
 
   return (
     <div>
+      {node}
       <div className="mx-auto max-w-3xl px-4 pt-4">
         <DemoFlowNav current="field-survey" />
       </div>
@@ -70,6 +85,7 @@ export default function FieldSurveyPage({
           <div className="flex gap-2">
             <button
               type="button"
+              onClick={saveOffline}
               className="flex-1 rounded-lg border border-line py-2.5 text-sm"
             >
               오프라인 저장
