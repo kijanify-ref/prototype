@@ -6,6 +6,7 @@
     "dev": "next dev --turbopack",
     "dev:clean": "node -e \"require('fs').rmSync('.next',{recursive:true,force:true})\" && next dev --turbopack",
     "build": "next build",
+    "build:pages": "cross-env NEXT_PUBLIC_BASE_PATH=/prototype next build",
     "start": "next start",
     "lint": "eslint",
     "typecheck": "tsc --noEmit"
@@ -22,6 +23,7 @@
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
+    "cross-env": "^7.0.3",
     "eslint": "^9",
     "eslint-config-next": "15.5.22",
     "tailwindcss": "^4",

@@ -4,6 +4,12 @@
 
 중소기업 스마트서비스 지원사업을 위해 주식회사 키자미테이블·티벨이 제작한 시제품으로, 현장 조사원과 관리자 업무를 하나의 흐름으로 시연합니다.
 
+**GitHub Pages:** https://kijanify-ref.github.io/prototype/
+
+> 최초 1회: [Settings → Pages](https://github.com/kijanify-ref/prototype/settings/pages)  
+> Source = **Deploy from a branch** → Branch = **`gh-pages` / `/ (root)`** → Save  
+> (`main` push 시 Actions가 `gh-pages`를 갱신합니다.)
+
 ## 핵심 가치
 
 * **현장 데이터 신뢰성 확보** — GPS·사진·조사값을 수집 단계에서 자동 점검
@@ -64,6 +70,7 @@
 | UI | Tailwind CSS 4 · 관리자 웹 / 조사원 모바일 시연 UI |
 | 지도·증빙 | 폴리곤 오버레이 + AI 생성 위성·정사·현장 이미지 |
 | Data | JSON Mock · 5년 토지피복·LUC 시연 데이터 |
+| Deploy | GitHub Pages (static export · `basePath=/prototype`) |
 
 ## 프로젝트 구성
 
@@ -91,6 +98,14 @@ npm run dev
 http://localhost:3000
 ```
 
+GitHub Pages용 정적 빌드:
+
+```bash
+cd web
+npm run build:pages
+```
+
+`basePath`는 `/prototype` 입니다.
 ## 권장 시연 시나리오
 
 1. 현황에서 KPI·알림 확인  

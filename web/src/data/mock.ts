@@ -173,6 +173,7 @@ export interface Alert {
   title: string;
   message: string;
   relatedLotId?: string;
+  href?: string;
   createdAt: string;
 }
 
@@ -873,6 +874,7 @@ export const alerts: Alert[] = [
     message:
       "Abebe Tadesse · Yirgacheffe 커피 로트의 Due Diligence Statement가 EUDR 제출 준비 상태입니다.",
     relatedLotId: "LOT-2026-041",
+    href: "/eudr",
     createdAt: "2026-02-20",
   },
   {
@@ -881,6 +883,7 @@ export const alerts: Alert[] = [
     title: "GPS 경계 미검증",
     message:
       "Kumasi Fringe Farm (farm-003) 폴리곤 검증이 필요합니다. EUDR 지리정보 요건 미충족.",
+    href: "/farms/farm-003",
     createdAt: "2026-02-18",
   },
   {
@@ -890,6 +893,7 @@ export const alerts: Alert[] = [
     message:
       "farm-003 위성 시계열(2021–2025)에서 컷오프 이후 산림 −0.65ha. LUC CO₂e 연배분 21.45 t이 탄소 산출에 반영되었습니다.",
     relatedLotId: "LOT-2026-018",
+    href: "/land-use",
     createdAt: "2026-02-19",
   },
   {
@@ -899,6 +903,7 @@ export const alerts: Alert[] = [
     message:
       "Gedeo Highland Plot A 현장 조사가 승인되었습니다. 탄소 산출 계산에 반영됩니다.",
     relatedLotId: "LOT-2026-041",
+    href: "/carbon",
     createdAt: "2026-01-22",
   },
 ];

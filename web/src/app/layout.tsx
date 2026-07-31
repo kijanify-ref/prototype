@@ -8,7 +8,11 @@ const sourceSans = Source_Sans_3({
 });
 
 export const metadata: Metadata = {
-  title: "KIJANIFY — 공급망·탄소",
+  metadataBase: new URL("https://kijanify-ref.github.io/prototype"),
+  title: {
+    default: "KIJANIFY — 공급망·탄소",
+    template: "%s · KIJANIFY",
+  },
   description:
     "커피·코코아 농업 공급망 탄소 데이터 및 ESG/EUDR 컴플라이언스 프로토타입",
   applicationName: "KIJANIFY",

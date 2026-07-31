@@ -1,5 +1,7 @@
 "use client";
 
+import { asset } from "@/lib/asset";
+
 /**
  * 시연용 GPS 폴리곤 맵
  * — AI 항공/위성 배경 위에 고정 bounds로 경계 폴리곤을 그립니다.
@@ -22,13 +24,14 @@ export function GpsMap({
 }) {
   const W = 360;
   const H = 280;
+  const mapSrc = asset(basemapSrc);
 
   if (!points.length) {
     return (
       <div className="relative flex aspect-[4/3] items-center justify-center overflow-hidden rounded-xl border border-dashed border-line bg-bg text-sm text-muted">
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
-          src={basemapSrc}
+          src={mapSrc}
           alt=""
           className="absolute inset-0 h-full w-full object-cover opacity-40"
         />
@@ -87,7 +90,7 @@ export function GpsMap({
           aria-label="GPS 필지 폴리곤 맵"
         >
           <image
-            href={basemapSrc}
+            href={mapSrc}
             x="0"
             y="0"
             width={W}

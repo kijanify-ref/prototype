@@ -84,17 +84,28 @@ export default function HomePage() {
         <div className="space-y-2">
           {alerts.map((alert) => {
             const Icon = severityIcon[alert.severity];
-            return (
-              <div
-                key={alert.id}
-                className={`flex gap-3 rounded-xl border p-4 ${severityStyles[alert.severity]}`}
-              >
+            const body = (
+              <>
                 <Icon size={18} className="mt-0.5 shrink-0" />
                 <div className="min-w-0">
                   <p className="text-sm font-medium">{alert.title}</p>
                   <p className="mt-0.5 text-xs opacity-90">{alert.message}</p>
                   <p className="mt-1 text-[10px] opacity-70">{alert.createdAt}</p>
                 </div>
+              </>
+            );
+            const className = `flex gap-3 rounded-xl border p-4 ${severityStyles[alert.severity]}`;
+            return alert.href ? (
+              <Link
+                key={alert.id}
+                href={alert.href}
+                className={`${className} transition hover:opacity-90`}
+              >
+                {body}
+              </Link>
+            ) : (
+              <div key={alert.id} className={className}>
+                {body}
               </div>
             );
           })}
