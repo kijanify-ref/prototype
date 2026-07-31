@@ -1,0 +1,20 @@
+# Dependencies
+node_modules/
+web/node_modules/
+
+# Next.js
+web/.next/
+web/out/
+
+# Env / OS / IDE
+.env*
+!.env.example
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+
+# Logs / coverage
+*.log
+npm-debug.log*
+coverage/
