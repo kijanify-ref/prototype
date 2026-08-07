@@ -33,6 +33,14 @@ jobs:
         run: npm run build
         env:
           NEXT_PUBLIC_BASE_PATH: /prototype
+      - name: Add development brief
+        working-directory: .
+        run: |
+          mkdir -p web/out/brief/assets
+          cp "PT자료/brief.html" web/out/brief/index.html
+          cp "PT자료/brief.html" web/out/brief/brief.html
+          cp "PT자료/brief.css" "PT자료/brief.js" "PT자료/brief-ui.js" "PT자료/presentation.css" web/out/brief/
+          cp "PT자료/assets/"* web/out/brief/assets/
       - name: Deploy to gh-pages branch
         uses: peaceiris/actions-gh-pages@v4
         with:
