@@ -85,10 +85,38 @@ body.nav-hidden .nav-toggle{left:16px}
 #data .head h2{font-size:clamp(30px,3vw,45px)}
 #data .head>p{margin-top:10px;line-height:1.6}
 #data .evidence-grid{margin-top:2.5vh;gap:22px}
-#data .compare{height:27vh;min-height:220px;max-height:280px}
+#data .compare{height:48vh;min-height:396px;max-height:500px}
 #data .logic article{padding:11px 13px}
 #data .logic b{margin:9px 0 5px}
 #data .logic p{font-size:9px;line-height:1.45}
 #data .formula{margin-top:1.5vh;padding:10px 13px}
 #data .warning{margin-top:6px}
-@media(max-width:650px){#data .compare{height:260px;min-height:260px}}
+@media(max-width:650px){#data .compare{height:390px;min-height:390px}}
+
+/* Slightly larger reading scale */
+.head h2{font-size:clamp(34px,3.55vw,54px)}
+.head>p{font-size:13.5px}
+.above h2{font-size:clamp(34px,3.55vw,54px)}
+.definition p{font-size:clamp(18px,1.7vw,25px)}
+.three h3{font-size:17px}
+.three p{font-size:12px}
+.user-three li{font-size:10.5px}
+.callout{font-size:11.5px}
+.architecture h3{font-size:18px}
+.architecture p{font-size:11px}
+.modules>div{font-size:11px}
+.modules b{font-size:12px}
+.logic p{font-size:10px}
+
+/* Eight-step process in two rows */
+#workflow .journey{grid-template-columns:repeat(4,1fr);gap:24px 18px;border-top:0;margin-top:5vh}
+#workflow .journey div{padding:20px 12px 14px 0;border-top:1px solid rgba(255,255,255,.35)}
+#workflow .journey span{font-size:14px}
+#workflow .journey small{font-size:10px}
+@media(max-width:650px){#workflow .journey{grid-template-columns:repeat(2,1fr)}}
+
+/* Clear GPS boundary versus degradation comparison */
+#data .clear-comparison>img{width:100%;height:100%;object-fit:cover}
+#data .comparison-label{position:absolute;z-index:3;top:16px;padding:8px 12px;border-radius:2px;color:#fff;font-size:10px;font-weight:700;letter-spacing:.04em;box-shadow:0 3px 12px rgba(0,0,0,.2)}
+#data .gps-label{left:16px;background:rgba(25,103,75,.92)}
+#data .degradation-label{right:16px;background:rgba(173,72,40,.92)}
