@@ -44,6 +44,154 @@
 @media(max-width:900px){
   #users .users-shared .data{grid-template-columns:1fr 1fr}
 }
+
+/* 03 · Service structure */
+#structure .head{margin-bottom:0}
+#structure .svc-arch{
+  display:grid;
+  grid-template-columns:minmax(0,.95fr) minmax(0,1.25fr) minmax(0,1fr);
+  gap:12px;
+  margin-top:2.4vh;
+  align-items:stretch;
+}
+#structure .svc-side{
+  display:grid;
+  grid-template-rows:1fr 1fr;
+  gap:12px;
+  min-height:0;
+}
+#structure .svc-panel{
+  display:flex;
+  flex-direction:column;
+  min-height:0;
+  padding:16px 16px 14px;
+  border:1px solid var(--line);
+  border-top:3px solid var(--green);
+  background:#fff;
+}
+#structure .svc-panel.hub{
+  background:linear-gradient(180deg,#f7faf6,#fff 38%);
+}
+#structure .svc-panel-title{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:10px;
+  margin-bottom:12px;
+}
+#structure .svc-panel-title h3{
+  margin:0;
+  font-size:17px;
+}
+#structure .svc-panel-title small{
+  padding:5px 8px;
+  border:1px solid #c9d8cd;
+  background:#eef5ef;
+  color:var(--green);
+  font-size:10px;
+  font-weight:700;
+  letter-spacing:.08em;
+}
+#structure .svc-items{
+  display:flex;
+  flex-direction:column;
+  gap:8px;
+}
+#structure .svc-items>div{
+  padding:10px 11px;
+  border:1px solid var(--line);
+  background:var(--paper);
+}
+#structure .svc-items b{
+  display:block;
+  margin-bottom:3px;
+  font-size:13px;
+}
+#structure .svc-items span{
+  color:var(--muted);
+  font-size:11.5px;
+  line-height:1.4;
+}
+#structure .svc-hub-note{
+  margin:0 0 12px;
+  color:var(--muted);
+  font-size:12.5px;
+  line-height:1.5;
+}
+#structure .svc-entities{
+  display:grid;
+  grid-template-columns:repeat(4,minmax(0,1fr));
+  gap:8px;
+  flex:1;
+}
+#structure .svc-entities>div{
+  display:grid;
+  place-items:center;
+  min-height:64px;
+  padding:10px 8px;
+  border:1px solid #cfdcce;
+  background:#fff;
+  color:var(--ink);
+  font-size:13px;
+  font-weight:700;
+  line-height:1.3;
+  text-align:center;
+}
+#structure .svc-entities>div.wide{grid-column:span 2}
+#structure .svc-entities em{
+  display:block;
+  margin-top:2px;
+  color:var(--muted);
+  font-size:10px;
+  font-style:normal;
+  font-weight:600;
+}
+#structure .svc-flow{
+  margin-top:12px;
+  padding:11px 12px;
+  border:1px solid #cfdcce;
+  background:#eef5ef;
+  color:var(--green);
+  font-size:12px;
+  font-weight:700;
+  text-align:center;
+  line-height:1.45;
+}
+#structure .svc-panel ul{
+  list-style:none;
+  margin:0;
+  padding:0;
+}
+#structure .svc-panel li{
+  position:relative;
+  padding:8px 0 8px 14px;
+  border-bottom:1px solid var(--line);
+  color:var(--ink);
+  font-size:13px;
+  line-height:1.45;
+}
+#structure .svc-panel li:last-child{border-bottom:0}
+#structure .svc-panel li::before{
+  content:"";
+  position:absolute;
+  top:.7em;
+  left:0;
+  width:6px;
+  height:6px;
+  border-radius:50%;
+  background:var(--green);
+}
+#structure .callout{margin-top:1.8vh}
+@media(max-width:1100px){
+  #structure .svc-arch{grid-template-columns:1fr 1fr}
+  #structure .svc-panel.hub{grid-column:1/-1;order:-1}
+}
+@media(max-width:750px){
+  #structure .svc-arch,
+  #structure .svc-side{grid-template-columns:1fr;grid-template-rows:none}
+  #structure .svc-entities{grid-template-columns:1fr 1fr}
+  #structure .svc-entities>div.wide{grid-column:span 2}
+}
 .definition.discuss p{font-size:15px;line-height:1.8}
 @media(max-width:900px){.architecture.triple{grid-template-columns:1fr}.architecture.triple .api,.architecture.triple .data{grid-column:1}}
 #scope,#delivery{display:none}

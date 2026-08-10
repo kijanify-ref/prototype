@@ -17,8 +17,9 @@
 <body>
     <aside class="rail"><a class="brand" href="#cover"><i>KJ</i><b>KIJANIFY</b></a>
         <nav><a href="#overview" data-nav><em>01</em>서비스 개요</a><a href="#users" data-nav><em>02</em>사용자·화면</a><a
-                href="#requirements" data-nav><em>03</em>기능 요구사항</a><a href="#data" data-nav><em>04</em>데이터·연계</a><a
-                href="#scope" data-nav><em>05</em>1차 개발 범위</a><a href="#delivery" data-nav><em>06</em>산출물·협의사항</a></nav>
+                href="#structure" data-nav><em>03</em>서비스 구성</a><a href="#requirements" data-nav><em>04</em>기능 요구사항</a><a
+                href="#data" data-nav><em>05</em>데이터·연계</a><a href="#scope" data-nav><em>06</em>1차 개발 범위</a><a
+                href="#delivery" data-nav><em>07</em>산출물·협의사항</a></nav>
         <footer>DEVELOPMENT BRIEF <b data-page>00 / 08</b></footer>
     </aside>
     <main>
@@ -118,7 +119,76 @@
             <div class="callout"><b>권한 원칙</b> 역할뿐 아니라 <strong>회사 소속과 데이터 범위</strong>를 함께 적용하고, 주요 상태·권한 변경 이력을 기록합니다.</div>
             <div class="future"><b>공통 요구사항</b><span>역할 기반 접근제어</span><span>변경이력</span><span>파일·증빙 관리</span><span>다국어 공지 조회</span><span>운영 로그</span></div>
         </section>
-        <section class="slide paper" id="requirements" data-section><span class="num">03</span>
+        <section class="slide paper" id="structure" data-section><span class="num">03</span>
+            <p class="kicker">SERVICE STRUCTURE</p>
+            <div class="head">
+                <h2>현장 입력부터 운영·결과 활용까지<br>하나의 데이터 구조로 연결합니다.</h2>
+                <p>조사원, 관리자, 고객사는 서로 다른 화면을 사용하지만 생산자·재배지·조사·공급망·탄소·DDS 데이터는 공통 구조에서 연결해 관리합니다.</p>
+            </div>
+            <div class="svc-arch">
+                <article class="svc-panel field">
+                    <div class="svc-panel-title">
+                        <h3>현장 조사</h3>
+                        <small>FIELD</small>
+                    </div>
+                    <div class="svc-items">
+                        <div><b>배정 조사 확인</b><span>진행 대상과 조사 상태 확인</span></div>
+                        <div><b>농가·재배지 정보 입력</b><span>현장 조사 항목 입력 및 수정</span></div>
+                        <div><b>GPS 위치·경계 수집</b><span>재배지 좌표와 경계정보 등록</span></div>
+                        <div><b>사진·증빙 등록</b><span>현장 자료와 관련 파일 업로드</span></div>
+                        <div><b>임시저장·제출</b><span>작성 중 저장 및 최종 제출</span></div>
+                    </div>
+                </article>
+
+                <article class="svc-panel hub">
+                    <div class="svc-panel-title">
+                        <h3>통합 데이터 관리</h3>
+                        <small>KIJANIFY DB</small>
+                    </div>
+                    <p class="svc-hub-note">기존 농가 데이터를 기준으로 조사·공급망·탄소·DDS 정보를 관계형 구조로 연결</p>
+                    <div class="svc-entities">
+                        <div>생산자<br><em>Producer</em></div>
+                        <div>재배지<br><em>Farm</em></div>
+                        <div>협동조합<br><em>Cooperative</em></div>
+                        <div>조사<br><em>Survey</em></div>
+                        <div class="wide">GPS · 증빙<br><em>Geo / Evidence</em></div>
+                        <div class="wide">공급망 · 로트<br><em>Supply Chain / Lot</em></div>
+                        <div class="wide">탄소 산정<br><em>Carbon</em></div>
+                        <div class="wide">DDS / EUDR<br><em>Due Diligence</em></div>
+                    </div>
+                    <div class="svc-flow">생산자·재배지 → 조사·GPS → 공급망·로트 → 탄소 → DDS/EUDR</div>
+                </article>
+
+                <div class="svc-side">
+                    <article class="svc-panel admin">
+                        <div class="svc-panel-title">
+                            <h3>운영·검수</h3>
+                            <small>ADMIN WEB</small>
+                        </div>
+                        <ul>
+                            <li>조사 접수·배정 및 진행상태 관리</li>
+                            <li>제출자료 검수·승인·반려</li>
+                            <li>생산자·재배지·공급망 관리</li>
+                            <li>탄소·DDS 처리 및 기준정보 관리</li>
+                        </ul>
+                    </article>
+                    <article class="svc-panel customer">
+                        <div class="svc-panel-title">
+                            <h3>결과 활용</h3>
+                            <small>CUSTOMER WEB</small>
+                        </div>
+                        <ul>
+                            <li>조사 진행현황 확인</li>
+                            <li>농가·공급망 이력 조회</li>
+                            <li>탄소 산정 결과 확인</li>
+                            <li>EUDR/DDS 자료 조회 및 보고서 다운로드</li>
+                        </ul>
+                    </article>
+                </div>
+            </div>
+            <div class="callout"><b>핵심 전제</b> 각 업무가 동일한 데이터를 기준으로 처리될 수 있도록 <strong>기존 DB·ERD 구조의 점검 및 개선</strong>이 필요합니다.</div>
+        </section>
+        <section class="slide paper" id="requirements" data-section><span class="num">04</span>
             <p class="kicker">FUNCTIONAL REQUIREMENTS</p>
             <div class="head">
                 <h2>개발 기능은 8개 업무영역으로<br>정리할 수 있습니다.</h2>
@@ -136,7 +206,7 @@
                 <div><b>08 · 사용자·공지</b><span>계정·회사·역할·메뉴·데이터 권한, 로그인·로그아웃, 공지 등록·조회</span><em>전체</em></div>
             </div>
         </section>
-        <section class="slide evidence" id="data" data-section><span class="num">04</span>
+        <section class="slide evidence" id="data" data-section><span class="num">05</span>
             <p class="kicker">DATA AND INTEGRATION</p>
             <div class="head">
                 <h2>내부 계산 로직과<br>외부 연계를 구분합니다.</h2>
@@ -168,7 +238,7 @@
             <p class="warning">※ 본 시스템은 탄소 계산과 DDS 작성 업무를 지원합니다. 공식 인증, 규제기관의 최종 판정 및 외부 시스템 직접 제출 여부는 별도 계약 범위로 구분합니다.
             </p>
         </section>
-        <section class="slide scope" id="scope" data-section><span class="num">05</span>
+        <section class="slide scope" id="scope" data-section><span class="num">06</span>
             <p class="kicker">MVP SCOPE</p>
             <div class="head">
                 <h2>1차 개발에 필요한 범위와<br>별도 협의 범위를 구분합니다.</h2>
@@ -203,7 +273,7 @@
             <div class="callout"><b>구현 방식 협의</b> 모바일 앱 또는 모바일 웹, GPS·지도 구성, 오프라인 저장·충돌처리, 외부 연계, 보고서 형식, 운영 인프라는 착수 전
                 확정합니다.</div>
         </section>
-        <section class="slide paper" id="delivery" data-section><span class="num">06</span>
+        <section class="slide paper" id="delivery" data-section><span class="num">07</span>
             <p class="kicker">DELIVERABLES AND DISCUSSION</p>
             <div class="head">
                 <h2>개발 결과물과 검수 기준을<br>함께 제안해 주세요.</h2>
