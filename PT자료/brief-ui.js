@@ -14,6 +14,9 @@ document.querySelectorAll(".head h2 br").forEach((lineBreak) => {
   lineBreak.replaceWith(document.createTextNode(" "));
 });
 
+const usersHeading = document.querySelector("#users .head h2");
+if (usersHeading) usersHeading.textContent = "사용자 유형과 화면 구성";
+
 const dataDescription = document.querySelector("#data .head > p");
 const dataHeading = document.querySelector("#data .head h2");
 if (dataHeading) dataHeading.textContent = "데이터 검수·계산 및 활용";
