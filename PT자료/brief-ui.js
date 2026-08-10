@@ -14,33 +14,6 @@ document.querySelectorAll(".head h2 br").forEach((lineBreak) => {
   lineBreak.replaceWith(document.createTextNode(" "));
 });
 
-const usersHeading = document.querySelector("#users .head h2");
-if (usersHeading) usersHeading.textContent = "사용자 유형과 화면 구성";
-
-const dataDescription = document.querySelector("#data .head > p");
-const dataHeading = document.querySelector("#data .head h2");
-if (dataHeading) dataHeading.textContent = "데이터 검수·계산 및 활용";
-if (dataDescription) {
-  dataDescription.textContent =
-    "등록된 현장·공급망 데이터와 적용 기준을 바탕으로 검수, 계산, 자료 조회가 이어집니다.";
-}
-
-const externalIntegrationCard = document.querySelector("#data .logic article:last-child");
-if (externalIntegrationCard) {
-  externalIntegrationCard.innerHTML =
-    "<small>OUTPUT</small><b>자료 조회·출력</b><p>검수 결과, 탄소 계산 결과, DDS 관련 자료를 역할별로 제공합니다.</p>";
-}
-
-const comparison = document.querySelector("#data .compare");
-if (comparison) {
-  comparison.classList.add("clear-comparison");
-  comparison.innerHTML = `
-    <img src="assets/gps-degradation-comparison.png" alt="동일 농경지의 GPS 경계 확인 상태와 황폐화 진행 상태 비교">
-    <span class="comparison-label gps-label">GPS 경계 확인</span>
-    <span class="comparison-label degradation-label">황폐화 진행</span>
-  `;
-}
-
 const journey = document.querySelector("#overview .journey");
 if (journey) {
   journey.classList.add("steps-7");
@@ -87,22 +60,11 @@ window.addEventListener("keydown", (event) => {
   const MAX = 1.5;
   const STEP = 0.05;
   let zoom = Number(sessionStorage.getItem(STORAGE_KEY)) || 1;
-  const badge = document.createElement("div");
-  badge.className = "zoom-badge";
-  badge.setAttribute("aria-live", "polite");
-  document.body.append(badge);
 
-  function apply(next, flash) {
+  function apply(next) {
     zoom = Math.round(Math.min(MAX, Math.max(MIN, next)) * 100) / 100;
     document.documentElement.style.zoom = String(zoom);
     sessionStorage.setItem(STORAGE_KEY, String(zoom));
-    badge.textContent = `${Math.round(zoom * 100)}%`;
-    badge.dataset.active = zoom === 1 ? "0" : "1";
-    if (flash !== false) {
-      badge.classList.add("show");
-      clearTimeout(badge._timer);
-      badge._timer = setTimeout(() => badge.classList.remove("show"), 900);
-    }
   }
 
   window.__deckZoom = {
@@ -117,7 +79,7 @@ window.addEventListener("keydown", (event) => {
     },
   };
 
-  apply(zoom, false);
+  apply(zoom);
 
   window.addEventListener(
     "wheel",
