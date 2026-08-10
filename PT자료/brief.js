@@ -9,7 +9,7 @@ nav?.querySelector('a[href="#delivery"]')?.remove();
 if (nav) {
   nav.insertAdjacentHTML(
     "beforeend",
-    '<a href="#discussion" data-nav><em>07</em>핵심 과제·협의</a>',
+    '<a href="#discussion" data-nav><em>06</em>핵심 과제·협의</a>',
   );
 }
 
@@ -34,7 +34,7 @@ finalSlide.className = "slide scope";
 finalSlide.id = "discussion";
 finalSlide.setAttribute("data-section", "");
 finalSlide.innerHTML = `
-  <span class="num">07</span>
+  <span class="num">06</span>
   <p class="kicker">CORE TASK AND DISCUSSION</p>
   <div class="head">
     <h2>이번 구축의 중심은<br>기존 DB 구조 개선입니다.</h2>

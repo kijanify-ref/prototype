@@ -43,7 +43,7 @@ if (comparison) {
   `;
 }
 
-const journey = document.querySelector("#workflow .journey");
+const journey = document.querySelector("#overview .journey");
 if (journey) {
   journey.classList.add("steps-7");
   journey.innerHTML = `

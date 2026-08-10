@@ -17,9 +17,9 @@
 <body>
     <aside class="rail"><a class="brand" href="#cover"><i>KJ</i><b>KIJANIFY</b></a>
         <nav><a href="#overview" data-nav><em>01</em>서비스 개요</a><a href="#users" data-nav><em>02</em>사용자·권한</a><a
-                href="#workflow" data-nav><em>03</em>업무 프로세스</a><a href="#channels" data-nav><em>04</em>화면 구성</a><a
-                href="#requirements" data-nav><em>05</em>기능 요구사항</a><a href="#data" data-nav><em>06</em>데이터·연계</a><a
-                href="#scope" data-nav><em>07</em>1차 개발 범위</a><a href="#delivery" data-nav><em>08</em>산출물·협의사항</a></nav>
+                href="#channels" data-nav><em>03</em>화면 구성</a><a
+                href="#requirements" data-nav><em>04</em>기능 요구사항</a><a href="#data" data-nav><em>05</em>데이터·연계</a><a
+                href="#scope" data-nav><em>06</em>1차 개발 범위</a><a href="#delivery" data-nav><em>07</em>산출물·협의사항</a></nav>
         <footer>DEVELOPMENT BRIEF <b data-page>00 / 08</b></footer>
     </aside>
     <main>
@@ -56,7 +56,19 @@
                     <p>정의된 배출계수와 산식을 적용하고 DDS 관련 데이터와 보고서를 조회·출력합니다.</p>
                 </article>
             </div>
-            <div class="callout process-line"><b>업무 흐름</b> <strong>조사 신청 → 접수·배정 → 현장 조사 → GPS·증빙 수집 → 검수·승인 → 탄소·EUDR/DDS 처리 → 결과 제공</strong></div>
+            <div class="process-board">
+                <p class="process-label">업무 프로세스</p>
+                <div class="journey steps-7">
+                    <div><b>01</b><span>조사 신청</span><small>농가·재배지 및 조사 대상 정보 등록</small></div>
+                    <div><b>02</b><span>접수·배정</span><small>신청 내용 확인 및 현장 조사 배정</small></div>
+                    <div><b>03</b><span>현장 조사</span><small>조사항목 입력 및 농가 현장정보 수집</small></div>
+                    <div><b>04</b><span>GPS·증빙 수집</span><small>재배지 위치·경계 및 사진·증빙자료 등록</small></div>
+                    <div><b>05</b><span>검수·승인</span><small>제출 데이터 확인 및 승인·반려 처리</small></div>
+                    <div><b>06</b><span>탄소·EUDR/DDS 처리</span><small>탄소 산정 및 규제 대응 데이터 검증·자료 생성</small></div>
+                    <div><b>07</b><span>결과 제공</span><small>처리 결과 및 관련 보고서 조회·다운로드</small></div>
+                </div>
+                <div class="scenario"><b>상태 관리</b><span>신청</span><span>접수</span><span>배정</span><span>조사</span><span>검수</span><span>승인·반려</span><span>처리</span><span>완료</span></div>
+            </div>
         </section>
         <section class="slide paper" id="users" data-section><span class="num">02</span>
             <p class="kicker">USERS AND PERMISSIONS</p>
@@ -102,25 +114,7 @@
             <div class="callout"><b>권한 원칙</b> 역할뿐 아니라 <strong>회사 소속과 데이터 범위</strong>를 함께 적용하고, 주요 상태·권한 변경 이력을 기록합니다.
             </div>
         </section>
-        <section class="slide journey-slide" id="workflow" data-section>
-            <div class="map-photo"></div>
-            <div class="map-shade"></div><span class="num">03</span>
-            <div class="above">
-                <p class="kicker">END-TO-END WORKFLOW</p>
-                <h2>신청부터 결과 제공까지<br>하나의 업무 건으로 연결합니다.</h2>
-                <div class="journey steps-7">
-                    <div><b>01</b><span>조사 신청</span><small>농가·재배지 및 조사 대상 정보 등록</small></div>
-                    <div><b>02</b><span>접수·배정</span><small>신청 내용 확인 및 현장 조사 배정</small></div>
-                    <div><b>03</b><span>현장 조사</span><small>조사항목 입력 및 농가 현장정보 수집</small></div>
-                    <div><b>04</b><span>GPS·증빙 수집</span><small>재배지 위치·경계 및 사진·증빙자료 등록</small></div>
-                    <div><b>05</b><span>검수·승인</span><small>제출 데이터 확인 및 승인·반려 처리</small></div>
-                    <div><b>06</b><span>탄소·EUDR/DDS 처리</span><small>탄소 산정 및 규제 대응 데이터 검증·자료 생성</small></div>
-                    <div><b>07</b><span>결과 제공</span><small>처리 결과 및 관련 보고서 조회·다운로드</small></div>
-                </div>
-                <div class="scenario"><b>상태 관리</b><span>신청</span><span>접수</span><span>배정</span><span>조사</span><span>검수</span><span>승인·반려</span><span>처리</span><span>완료</span></div>
-            </div>
-        </section>
-        <section class="slide paper" id="channels" data-section><span class="num">04</span>
+        <section class="slide paper" id="channels" data-section><span class="num">03</span>
             <p class="kicker">SERVICE CHANNELS</p>
             <div class="head">
                 <h2>1차 시스템은 세 화면으로<br>구성합니다.</h2>
@@ -146,7 +140,7 @@
             <div class="future"><b>공통 요구사항</b><span>역할 기반 접근제어</span><span>변경이력</span><span>파일·증빙 관리</span><span>다국어 공지
                     조회</span><span>운영 로그</span></div>
         </section>
-        <section class="slide paper" id="requirements" data-section><span class="num">05</span>
+        <section class="slide paper" id="requirements" data-section><span class="num">04</span>
             <p class="kicker">FUNCTIONAL REQUIREMENTS</p>
             <div class="head">
                 <h2>개발 기능은 8개 업무영역으로<br>정리할 수 있습니다.</h2>
@@ -164,7 +158,7 @@
                 <div><b>08 · 사용자·공지</b><span>계정·회사·역할·메뉴·데이터 권한, 로그인·로그아웃, 공지 등록·조회</span><em>전체</em></div>
             </div>
         </section>
-        <section class="slide evidence" id="data" data-section><span class="num">06</span>
+        <section class="slide evidence" id="data" data-section><span class="num">05</span>
             <p class="kicker">DATA AND INTEGRATION</p>
             <div class="head">
                 <h2>내부 계산 로직과<br>외부 연계를 구분합니다.</h2>
@@ -196,7 +190,7 @@
             <p class="warning">※ 본 시스템은 탄소 계산과 DDS 작성 업무를 지원합니다. 공식 인증, 규제기관의 최종 판정 및 외부 시스템 직접 제출 여부는 별도 계약 범위로 구분합니다.
             </p>
         </section>
-        <section class="slide scope" id="scope" data-section><span class="num">07</span>
+        <section class="slide scope" id="scope" data-section><span class="num">06</span>
             <p class="kicker">MVP SCOPE</p>
             <div class="head">
                 <h2>1차 개발에 필요한 범위와<br>별도 협의 범위를 구분합니다.</h2>
@@ -231,7 +225,7 @@
             <div class="callout"><b>구현 방식 협의</b> 모바일 앱 또는 모바일 웹, GPS·지도 구성, 오프라인 저장·충돌처리, 외부 연계, 보고서 형식, 운영 인프라는 착수 전
                 확정합니다.</div>
         </section>
-        <section class="slide paper" id="delivery" data-section><span class="num">08</span>
+        <section class="slide paper" id="delivery" data-section><span class="num">07</span>
             <p class="kicker">DELIVERABLES AND DISCUSSION</p>
             <div class="head">
                 <h2>개발 결과물과 검수 기준을<br>함께 제안해 주세요.</h2>
