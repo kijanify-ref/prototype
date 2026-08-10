@@ -82,3 +82,68 @@ window.addEventListener("keydown", (event) => {
     tocButton.focus();
   }
 });
+
+(function initDeckZoom() {
+  const STORAGE_KEY = "kizami-deck-zoom";
+  const MIN = 0.65;
+  const MAX = 1.5;
+  const STEP = 0.05;
+  let zoom = Number(sessionStorage.getItem(STORAGE_KEY)) || 1;
+  const badge = document.createElement("div");
+  badge.className = "zoom-badge";
+  badge.setAttribute("aria-live", "polite");
+  document.body.append(badge);
+
+  function apply(next, flash) {
+    zoom = Math.round(Math.min(MAX, Math.max(MIN, next)) * 100) / 100;
+    document.documentElement.style.zoom = String(zoom);
+    sessionStorage.setItem(STORAGE_KEY, String(zoom));
+    badge.textContent = `${Math.round(zoom * 100)}%`;
+    badge.dataset.active = zoom === 1 ? "0" : "1";
+    if (flash !== false) {
+      badge.classList.add("show");
+      clearTimeout(badge._timer);
+      badge._timer = setTimeout(() => badge.classList.remove("show"), 900);
+    }
+  }
+
+  window.__deckZoom = {
+    adjust(delta) {
+      apply(zoom + delta);
+    },
+    set(value) {
+      apply(value);
+    },
+    reset() {
+      apply(1);
+    },
+  };
+
+  apply(zoom, false);
+
+  window.addEventListener(
+    "wheel",
+    (event) => {
+      if (!(event.ctrlKey || event.metaKey)) return;
+      event.preventDefault();
+      window.__deckZoom.adjust(event.deltaY > 0 ? -STEP : STEP);
+    },
+    { passive: false, capture: true },
+  );
+
+  window.addEventListener("keydown", (event) => {
+    if (!(event.ctrlKey || event.metaKey)) return;
+    if (event.key === "=" || event.key === "+" || event.code === "NumpadAdd") {
+      event.preventDefault();
+      window.__deckZoom.adjust(STEP);
+    }
+    if (event.key === "-" || event.key === "_" || event.code === "NumpadSubtract") {
+      event.preventDefault();
+      window.__deckZoom.adjust(-STEP);
+    }
+    if (event.key === "0" || event.code === "Numpad0") {
+      event.preventDefault();
+      window.__deckZoom.reset();
+    }
+  });
+})();

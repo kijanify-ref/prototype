@@ -118,6 +118,11 @@ function nearestIndex() {
 window.addEventListener(
   "wheel",
   (event) => {
+    if (event.ctrlKey || event.metaKey) {
+      event.preventDefault();
+      window.__deckZoom?.adjust(event.deltaY > 0 ? -0.05 : 0.05);
+      return;
+    }
     if (event.target.closest(".compare, [data-slider], input, textarea, select"))
       return;
     if (Math.abs(event.deltaY) < 18) return;
