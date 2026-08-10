@@ -71,67 +71,50 @@
                 </div>
             </div>
         </section>
-        <section class="slide paper" id="data" data-section><span class="num">02</span>
-            <p class="kicker">EUDR / DDS</p>
-            <div class="head">
-                <h2>EUDR 대응을 위한 데이터 및 처리 구조</h2>
-            </div>
-            <div class="eudr-define">
-                <b>EUDR 이란?</b>
-                <p>EUDR(EU Deforestation Regulation)은 EU 시장에 관련 상품을 공급하기 위해 생산지 위치와 공급망 정보를 확인하고, <br>산림 훼손 관련 위험에 대한 실사를 수행하여 DDS(Due Diligence Statement)를 제출하도록 요구하는 규제입니다.</p>
-            </div>
-            <div class="eudr-main">
-                <div class="eudr-left">
-                    <div>
+        <section class="slide journey-slide" id="data" data-section>
+            <div class="map-photo"></div>
+            <div class="map-shade"></div>
+            <span class="num">02</span>
+            <div class="above">
+                <p class="kicker">EUDR / DDS</p>
+                <div class="head">
+                    <h2>EUDR 대응을 위한 데이터 및 처리 구조</h2>
+                </div>
+                <div class="eudr-define">
+                    <b>EUDR 이란?</b>
+                    <p>EUDR(EU Deforestation Regulation)은 EU 시장에 관련 상품을 공급하기 위해 생산지 위치와 공급망 정보를 확인하고, <br>산림 훼손 관련 위험에 대한 실사를 수행하여 DDS(Due Diligence Statement)를 제출하도록 요구하는 규제입니다.</p>
+                </div>
+                <div class="eudr-main">
+                    <div class="eudr-block">
                         <p class="eudr-label">EUDR / DDS에 필요한 주요 데이터</p>
                         <div class="eudr-data-list">
-                            <div><b>생산자·재배지</b><span>생산자, 농장, 협동조합, 생산국 등 기본정보</span></div>
-                            <div><b>GPS·재배지 경계</b><span>좌표, 면적, 경계정보 등 Geolocation 데이터</span></div>
-                            <div><b>상품·생산 정보</b><span>품목, 생산량, 생산 관련 정보</span></div>
-                            <div><b>공급망·LOT 이력</b><span>생산·가공·저장·운송 단계와 로트 추적 정보</span></div>
-                            <div><b>조사·증빙 자료</b><span>현장 조사 결과, 사진, 문서 등 관련 증빙</span></div>
-                            <div><b>검증·판단 결과</b><span>누락, 위치, 정합성, Due Diligence 관련 확인 결과</span></div>
+                            <div><em>01</em><b>생산자·재배지</b><span>생산자, 농장, 협동조합, 생산국 등 기본정보</span></div>
+                            <div><em>02</em><b>GPS·재배지 경계</b><span>좌표, 면적, 경계정보 등 Geolocation 데이터</span></div>
+                            <div><em>03</em><b>상품·생산 정보</b><span>품목, 생산량, 생산 관련 정보</span></div>
+                            <div><em>04</em><b>공급망·LOT 이력</b><span>생산·가공·저장·운송 단계와 로트 추적 정보</span></div>
+                            <div><em>05</em><b>조사·증빙 자료</b><span>현장 조사 결과, 사진, 문서 등 관련 증빙</span></div>
+                            <div><em>06</em><b>검증·판단 결과</b><span>누락, 위치, 정합성, Due Diligence 관련 확인 결과</span></div>
                         </div>
                     </div>
                     <div class="eudr-process">
                         <p class="eudr-label">DDS 생성 흐름</p>
-                        <div class="eudr-step"><em>01</em><div><b>원천 데이터 수집</b><span>농가·GPS·상품·공급망·증빙 데이터 연결</span></div></div>
-                        <div class="eudr-step"><em>02</em><div><b>필수정보 확인</b><span>누락·정합성·위치정보 및 관련 증빙 검토</span></div></div>
-                        <div class="eudr-step"><em>03</em><div><b>EUDR / DDS 항목 구성</b><span>필요 데이터를 항목별로 집계·정리</span></div></div>
-                        <div class="eudr-step"><em>04</em><div><b>보고서 생성·검토</b><span>초안 생성 후 관리자 검토·승인·출력</span></div></div>
+                        <div class="eudr-steps">
+                            <div class="eudr-step"><em>01</em><div><b>원천 데이터 수집</b><span>농가·GPS·상품·공급망·증빙 데이터 연결</span></div></div>
+                            <div class="eudr-step"><em>02</em><div><b>필수정보 확인</b><span>누락·정합성·위치정보 및 관련 증빙 검토</span></div></div>
+                            <div class="eudr-step"><em>03</em><div><b>EUDR / DDS 항목 구성</b><span>필요 데이터를 항목별로 집계·정리</span></div></div>
+                            <div class="eudr-step"><em>04</em><div><b>보고서 생성·검토</b><span>초안 생성 후 관리자 검토·승인·출력</span></div></div>
+                        </div>
                     </div>
                 </div>
-                <div class="eudr-right">
-                    <div class="eudr-visual">
-                        <div class="eudr-visual-head">
-                            <div>
-                                <h3>생산지 토지이용 변화 확인</h3>
-                                <p>동일 농경지의 GPS 경계 확인 상태와 황폐화 진행 상태를 비교합니다.</p>
-                            </div>
-                            <small>GPS · 황폐화</small>
-                        </div>
-                        <div class="eudr-compare clear-comparison">
-                            <img src="assets/gps-degradation-comparison.png" alt="동일 농경지의 GPS 경계 확인 상태와 황폐화 진행 상태 비교">
-                            <span class="comparison-label gps-label">GPS 경계 확인</span>
-                            <span class="comparison-label degradation-label">황폐화 진행</span>
-                        </div>
-                        <div class="eudr-checks">
-                            <span>재배지 경계 일치 여부</span>
-                            <span>토지이용 변화 비교</span>
-                            <span>산림 훼손·황폐화 확인</span>
-                        </div>
-                    </div>
-                    <div class="eudr-ai">
-                        <h3>AI 지원 영역</h3>
-                        <div class="eudr-ai-flow">
-                            <span>누락·이상정보 확인</span>
-                            <span>관련 데이터 정리</span>
-                            <span>DDS 항목 구성</span>
-                            <span>보고서 문안 초안</span>
-                            <span>관리자 검토</span>
-                        </div>
-                        <p class="eudr-ai-note">AI는 데이터 확인과 보고서 작성 업무를 지원하며, 최종 검토·승인 및 제출 여부는 별도 검수 절차에 따라 처리합니다.</p>
-                    </div>
+                <div class="eudr-commodities">
+                    <b>대상 품목</b>
+                    <span>커피</span>
+                    <span>코코아</span>
+                    <span>팜유</span>
+                    <span>대두</span>
+                    <span>고무</span>
+                    <span>목재</span>
+                    <span>소·축산</span>
                 </div>
             </div>
         </section>
@@ -258,16 +241,6 @@
                         <div class="dir-auto-block">
                             <h4>EUDR / DDS</h4>
                             <div class="dir-mini"><span>농가 · GPS · 공급망 · 증빙</span><i>↓</i><span>필수정보 검증</span><i>↓</i><span>DDS 생성 · 관리</span></div>
-                        </div>
-                    </div>
-                    <div class="dir-ai">
-                        <div class="dir-ai-head">
-                            <strong>AI 지원 영역</strong>
-                        </div>
-                        <div class="dir-ai-items">
-                            <span>누락·이상정보 확인</span>
-                            <span>관련 데이터 정리</span>
-                            <span>보고서 작성 지원</span>
                         </div>
                     </div>
                 </article>
