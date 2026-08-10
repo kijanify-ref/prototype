@@ -16,7 +16,7 @@
 .head h2 br{display:none}
 .head>p{max-width:none;width:100%;margin-top:16px;font-size:15px;line-height:1.75}
 .above h2{font-size:clamp(32px,3.35vw,50px)}
-.cover-copy{padding:14vh 5.5vw 0;max-width:min(1180px,92%);width:100%}
+.cover-copy{padding:14vh 5.5vw 0;max-width:none;width:100%}
 .cover h1{max-width:min(1100px,100%);font-size:clamp(38px,4.5vw,64px)}
 .cover-copy>p{margin:4.5vh 0 1.5vh}
 .purpose{max-width:min(980px,100%);margin-top:3.5vh;font-size:12px}
@@ -134,7 +134,7 @@ html{scroll-snap-type:y mandatory;scroll-padding:0}
 .slide{scroll-snap-align:start;scroll-snap-stop:always;min-height:100dvh;height:auto;overflow-x:hidden;overflow-y:auto;max-width:100%}
 main{max-width:100%;overflow-x:clip}
 .head,.purpose,.above{max-width:100%}
-.cover-copy{max-width:min(1180px,92%)}
+.cover-copy{max-width:none}
 .head h2,.head>p{max-width:none}
 .three,.architecture,.scope-grid,.evidence-grid,.modules{max-width:100%}
 @media(max-width:1280px){
