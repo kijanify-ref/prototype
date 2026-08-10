@@ -16,7 +16,7 @@
 
 <body>
     <aside class="rail"><a class="brand" href="#cover"><i>KJ</i><b>KIJANIFY</b></a>
-        <nav><a href="#overview" data-nav><em>01</em>서비스 개요</a><a href="#users" data-nav><em>02</em>사용자·화면</a><a
+        <nav><a href="#overview" data-nav><em>01</em>서비스 개요</a><a href="#structure" data-nav><em>02</em>서비스 구성</a><a
                 href="#requirements" data-nav><em>03</em>기능 요구사항</a><a href="#data" data-nav><em>04</em>데이터·연계</a><a
                 href="#scope" data-nav><em>05</em>1차 개발 범위</a><a href="#delivery" data-nav><em>06</em>산출물·협의사항</a></nav>
         <footer>DEVELOPMENT BRIEF <b data-page>00 / 08</b></footer>
@@ -71,52 +71,112 @@
                 </div>
             </div>
         </section>
-        <section class="slide paper" id="users" data-section><span class="num">02</span>
-            <p class="kicker">USERS AND CHANNELS</p>
+        <section class="slide paper" id="structure" data-section><span class="num">02</span>
+            <p class="kicker">SERVICE ARCHITECTURE</p>
             <div class="head">
-                <h2>세 사용자 유형과 화면에 맞춰<br>구성합니다.</h2>
-                <p>역할과 소속 회사에 따라 접근을 구분하고, 생산자·농장·조사·로트 데이터는 공통으로 사용합니다.</p>
+                <h2>사용자별 업무를 하나의<br>데이터 구조로 연결합니다.</h2>
             </div>
-            <div class="three user-three">
-                <article><i>01 · FIELD MOBILE</i>
-                    <h3>현장 조사원</h3>
-                    <p>배정된 조사 건을 현장에서 입력하는 앱·모바일 웹</p>
+            <div class="svc-map">
+                <article class="svc-card svc-field">
+                    <header>
+                        <em>①</em>
+                        <div>
+                            <small>FIELD</small>
+                            <h3>현장 조사</h3>
+                            <span>Surveyor Mobile</span>
+                        </div>
+                    </header>
+                    <div class="svc-device phone" aria-hidden="true">
+                        <div class="svc-device-screen">
+                            <b>KIJANIFY</b>
+                            <p>현장 조사</p>
+                            <i></i><i></i><i></i>
+                        </div>
+                    </div>
                     <ul>
-                        <li>배정 조사·진행상태 확인</li>
-                        <li>GPS 위치·농장 경계 등록</li>
-                        <li>조사서·사진 업로드, 임시저장·제출</li>
-                        <li>오프라인 입력과 동기화</li>
+                        <li>배정된 조사 건 확인</li>
+                        <li>농가·재배지 현장정보 입력</li>
+                        <li>GPS 위치·경계 수집</li>
+                        <li>사진·증빙자료 등록</li>
+                        <li>임시저장·제출·재수정</li>
                     </ul>
+                    <p class="svc-note">모바일 환경에 최적화된 조사 입력과 오프라인 대응</p>
                 </article>
-                <article><i>02 · CUSTOMER WEB</i>
-                    <h3>고객사 사용자</h3>
-                    <p>자사 범위의 조사·공급망·결과자료를 다루는 사용자 웹</p>
-                    <ul>
-                        <li>조사 신청과 상태·이력 조회</li>
-                        <li>생산자·농장·공급망·로트 확인</li>
-                        <li>탄소·DDS 결과 열람·다운로드</li>
-                        <li>공지·관련 자료 조회</li>
-                    </ul>
+
+                <article class="svc-card svc-hub">
+                    <header>
+                        <em>②</em>
+                        <div>
+                            <small>KIJANIFY DB</small>
+                            <h3>통합 데이터 관리</h3>
+                            <span>Central Data Hub</span>
+                        </div>
+                    </header>
+                    <div class="svc-db" aria-hidden="true">
+                        <div class="svc-db-core">
+                            <span>생산자</span>
+                            <span>농장</span>
+                            <span>협동조합</span>
+                            <span>조사</span>
+                            <span>위치·증빙</span>
+                            <span>공급망·로트</span>
+                            <span>탄소</span>
+                            <span>DDS·EUDR</span>
+                        </div>
+                    </div>
+                    <p class="svc-note">기존 농가 데이터를 기반으로 조사·공급망·탄소·DDS 데이터를 연결·관리</p>
                 </article>
-                <article><i>03 · ADMIN WEB</i>
-                    <h3>관리자·운영 담당자</h3>
-                    <p>전체 운영·검수·기준정보·권한을 관리하는 운영 웹</p>
-                    <ul>
-                        <li>조사 접수·배정·승인·반려</li>
-                        <li>필수값·위치·증빙 검수</li>
-                        <li>배출계수·계산 기준·DDS 관리</li>
-                        <li>사용자·권한·공지·운영현황</li>
-                    </ul>
-                </article>
-            </div>
-            <div class="users-shared">
-                <div class="api"><i></i><b>기존 DB 리팩터링 · 공통 업무·데이터 처리</b><i></i></div>
-                <div class="data">
-                    <span>사용자·회사</span><span>생산자·농장</span><span>조사·검수</span><span>계산·DDS</span><span>공급망·로트</span>
+
+                <div class="svc-right">
+                    <article class="svc-card svc-admin">
+                        <header>
+                            <em>③</em>
+                            <div>
+                                <small>ADMIN WEB</small>
+                                <h3>운영 · 검수</h3>
+                                <span>운영 관리자 웹</span>
+                            </div>
+                        </header>
+                        <div class="svc-device desktop" aria-hidden="true">
+                            <div class="svc-device-screen">
+                                <b>운영 현황</b>
+                                <i></i><i></i>
+                            </div>
+                        </div>
+                        <ul>
+                            <li>조사 접수·배정</li>
+                            <li>제출자료 검수·승인/반려</li>
+                            <li>생산자·농장·공급망 관리</li>
+                            <li>탄소·DDS 처리(계산·문서)</li>
+                            <li>기준정보·사용자 관리</li>
+                        </ul>
+                    </article>
+                    <article class="svc-card svc-customer">
+                        <header>
+                            <em>④</em>
+                            <div>
+                                <small>CUSTOMER WEB</small>
+                                <h3>결과 활용</h3>
+                                <span>고객사 사용자 웹</span>
+                            </div>
+                        </header>
+                        <div class="svc-device desktop" aria-hidden="true">
+                            <div class="svc-device-screen">
+                                <b>결과 대시보드</b>
+                                <i></i><i></i>
+                            </div>
+                        </div>
+                        <ul>
+                            <li>조사 진행상태 확인</li>
+                            <li>농가·공급망 이력 조회</li>
+                            <li>탄소 결과 확인</li>
+                            <li>EUDR / DDS 자료 조회</li>
+                            <li>보고서 다운로드</li>
+                        </ul>
+                    </article>
                 </div>
             </div>
-            <div class="callout"><b>권한 원칙</b> 역할뿐 아니라 <strong>회사 소속과 데이터 범위</strong>를 함께 적용하고, 주요 상태·권한 변경 이력을 기록합니다.</div>
-            <div class="future"><b>공통 요구사항</b><span>역할 기반 접근제어</span><span>변경이력</span><span>파일·증빙 관리</span><span>다국어 공지 조회</span><span>운영 로그</span></div>
+            <div class="callout svc-foot"><b>핵심 전제</b> 각 업무가 동일 데이터를 기준으로 처리되도록 <strong>기존 DB·ERD 구조를 점검·개선</strong>하는 작업이 필요합니다.</div>
         </section>
         <section class="slide paper" id="requirements" data-section><span class="num">03</span>
             <p class="kicker">FUNCTIONAL REQUIREMENTS</p>
