@@ -124,19 +124,106 @@ body.nav-hidden .nav-toggle{left:16px}
 @media(max-width:1200px){#workflow .journey.steps-7,#overview .journey.steps-7{grid-template-columns:repeat(4,1fr)}}
 @media(max-width:650px){#workflow .journey{grid-template-columns:repeat(2,1fr)}#workflow .journey.steps-7,#overview .journey.steps-7{grid-template-columns:repeat(2,1fr)}}
 
-#overview .process-board{margin-top:3vh}
-#overview .process-label{margin:0 0 1.2vh;color:var(--green);font-size:11px;font-weight:700;letter-spacing:.14em}
+#overview .process-board{margin-top:3.2vh}
+#overview .process-label{margin:0 0 1.4vh;color:var(--green);font-size:11px;font-weight:700;letter-spacing:.14em}
 #overview .journey{margin-top:0;border-top:0}
-#overview .journey div{border-top:1px solid var(--line);color:var(--ink)}
-#overview .journey b{color:var(--green)}
-#overview .journey span{color:var(--ink);font-weight:700}
-#overview .journey small{color:var(--muted)}
-#overview .scenario{margin-top:2.5vh;border:1px solid var(--line);background:#fff;color:var(--ink)}
-#overview .scenario b{color:var(--green)}
-#overview .scenario span{color:var(--muted)}
+#overview .journey.steps-7{
+  display:grid;
+  grid-template-columns:repeat(7,minmax(0,1fr));
+  gap:0;
+  padding:0;
+  border:1px solid var(--line);
+  background:var(--line);
+}
+#overview .journey.steps-7 div{
+  position:relative;
+  display:flex;
+  flex-direction:column;
+  gap:8px;
+  min-height:148px;
+  padding:16px 14px 14px;
+  border-top:0;
+  background:#fff;
+}
+#overview .journey.steps-7 div:not(:last-child)::after{
+  content:"→";
+  position:absolute;
+  top:18px;
+  right:-0.55em;
+  z-index:1;
+  color:var(--green);
+  font-size:12px;
+  font-weight:700;
+  line-height:1;
+}
+#overview .journey b{
+  color:var(--green);
+  font-size:11px;
+  letter-spacing:.06em;
+}
+#overview .journey span{
+  color:var(--ink);
+  font-size:14px;
+  font-weight:700;
+  line-height:1.3;
+}
+#overview .journey small{
+  margin-top:auto;
+  color:var(--muted);
+  font-size:12px;
+  line-height:1.45;
+}
 
-.callout.process-line{font-size:13px;line-height:1.55}
-.callout.process-line strong{font-weight:700}
+#overview .three.duo{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:1px;
+  margin-top:3vh;
+  border:1px solid var(--line);
+  background:var(--line);
+}
+#overview .three.duo article{
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+  min-height:168px;
+  padding:24px 22px;
+  background:#fff;
+}
+#overview .three.duo i{
+  color:var(--green);
+  font-size:11px;
+  font-style:normal;
+  font-weight:700;
+  letter-spacing:.08em;
+}
+#overview .three.duo h3{
+  margin:0;
+  font-size:18px;
+  letter-spacing:.02em;
+}
+#overview .three.duo p{
+  margin:0;
+  max-width:none;
+  color:var(--ink);
+  font-size:15px;
+  font-weight:500;
+  line-height:1.65;
+}
+
+#overview .head{margin-bottom:0}
+#overview .head>p{max-width:min(980px,100%)}
+
+@media(max-width:1200px){
+  #overview .journey.steps-7{grid-template-columns:repeat(4,1fr)}
+  #overview .journey.steps-7 div:nth-child(4)::after{display:none}
+}
+@media(max-width:650px){
+  #overview .three.duo,
+  #overview .journey.steps-7{grid-template-columns:1fr}
+  #overview .journey.steps-7 div::after{display:none}
+  #overview .journey.steps-7 div{min-height:0}
+}
 
 /* Clear GPS boundary versus degradation comparison */
 #data .clear-comparison>img{width:100%;height:100%;object-fit:cover}
