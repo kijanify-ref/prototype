@@ -9,7 +9,7 @@ nav?.querySelector('a[href="#delivery"]')?.remove();
 if (nav) {
   nav.insertAdjacentHTML(
     "beforeend",
-    '<a href="#discussion" data-nav><em>06</em>핵심 과제·협의</a>',
+    '<a href="#discussion" data-nav><em>05</em>핵심 과제·협의</a>',
   );
 }
 
@@ -24,17 +24,12 @@ moduleHeader?.insertAdjacentHTML(
   '<div class="db-row"><b>00 · 기존 DB 개선</b><span>현행 데이터 구조 진단, 중복·불일치 정리, 핵심 식별체계와 관계 재설계, 기존 데이터 이관</span><em>공통 기반</em></div>',
 );
 
-const commonLayer = document.querySelector("#channels .api b");
-if (commonLayer) {
-  commonLayer.textContent = "기존 DB 리팩터링 · 공통 업무·데이터 처리";
-}
-
 const finalSlide = document.createElement("section");
 finalSlide.className = "slide scope";
 finalSlide.id = "discussion";
 finalSlide.setAttribute("data-section", "");
 finalSlide.innerHTML = `
-  <span class="num">06</span>
+  <span class="num">05</span>
   <p class="kicker">CORE TASK AND DISCUSSION</p>
   <div class="head">
     <h2>이번 구축의 중심은<br>기존 DB 구조 개선입니다.</h2>

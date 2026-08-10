@@ -3,6 +3,47 @@
 .user-three ul{list-style:none;margin:20px 0 0;padding:17px 0 0;border-top:1px solid var(--line)}
 .user-three li{padding:5px 0;color:var(--muted);font-size:10px}
 .user-three li:before{content:"·";margin-right:7px;color:var(--green)}
+#users .users-shared{
+  display:grid;
+  gap:8px;
+  margin-top:2.2vh;
+  padding:12px 14px;
+  border:1px solid var(--line);
+  background:#fff;
+}
+#users .users-shared .api{
+  grid-column:auto;
+  display:grid;
+  grid-template-columns:1fr auto 1fr;
+  align-items:center;
+  gap:14px;
+  padding:4px 0 8px;
+  border-bottom:1px solid var(--line);
+  color:var(--green);
+  font-size:12px;
+  font-weight:700;
+  text-align:center;
+}
+#users .users-shared .api i{height:1px;background:var(--line)}
+#users .users-shared .data{
+  grid-column:auto;
+  display:grid;
+  grid-template-columns:repeat(5,minmax(0,1fr));
+  gap:7px;
+}
+#users .users-shared .data span{
+  padding:8px 6px;
+  background:var(--paper);
+  color:var(--muted);
+  font-size:11px;
+  font-weight:600;
+  text-align:center;
+}
+#users .callout{margin-top:1.8vh}
+#users .future{margin-top:1.6vh;padding:12px 0}
+@media(max-width:900px){
+  #users .users-shared .data{grid-template-columns:1fr 1fr}
+}
 .definition.discuss p{font-size:15px;line-height:1.8}
 @media(max-width:900px){.architecture.triple{grid-template-columns:1fr}.architecture.triple .api,.architecture.triple .data{grid-column:1}}
 #scope,#delivery{display:none}

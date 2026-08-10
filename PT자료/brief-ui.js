@@ -15,9 +15,7 @@ document.querySelectorAll(".head h2 br").forEach((lineBreak) => {
 });
 
 const usersHeading = document.querySelector("#users .head h2");
-const usersDescription = document.querySelector("#users .head > p");
-if (usersHeading) usersHeading.textContent = "사용자 유형 및 권한";
-usersDescription?.remove();
+if (usersHeading) usersHeading.textContent = "사용자 유형과 화면 구성";
 
 const dataDescription = document.querySelector("#data .head > p");
 const dataHeading = document.querySelector("#data .head h2");
