@@ -50,6 +50,8 @@ finalSlide.innerHTML = `
 `;
 document.querySelector("main")?.append(finalSlide);
 
+let current = 0;
+let snapLock = false;
 const sections = [...document.querySelectorAll("[data-section]")];
 const links = [...document.querySelectorAll("[data-nav]")];
 const page = document.querySelector("[data-page]");
@@ -58,15 +60,17 @@ const total = sections.length - 1;
 
 const observer = new IntersectionObserver(
   (entries) => {
-    const current = entries
+    const visible = entries
       .filter((entry) => entry.isIntersecting)
       .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
-    if (!current) return;
-    const index = Math.max(0, sections.indexOf(current.target));
+    if (!visible) return;
+    const index = Math.max(0, sections.indexOf(visible.target));
+    current = index;
     links.forEach((link) =>
-      link.classList.toggle("active", link.hash === `#${current.target.id}`),
+      link.classList.toggle("active", link.hash === `#${visible.target.id}`),
     );
-    if (page) page.textContent = `${String(index).padStart(2, "0")} / ${String(total).padStart(2, "0")}`;
+    if (page)
+      page.textContent = `${String(index).padStart(2, "0")} / ${String(total).padStart(2, "0")}`;
   },
   { threshold: [0.35, 0.6] },
 );
@@ -74,9 +78,6 @@ sections.forEach((section) => observer.observe(section));
 
 document.querySelector("[data-menu]")?.addEventListener("click", () =>
   rail?.classList.toggle("open"),
-);
-links.forEach((link) =>
-  link.addEventListener("click", () => rail?.classList.remove("open")),
 );
 
 document.querySelector("[data-slider]")?.addEventListener("input", (event) => {
@@ -86,3 +87,91 @@ document.querySelector("[data-slider]")?.addEventListener("input", (event) => {
   if (before) before.style.width = `${value}%`;
   if (line) line.style.left = `${value}%`;
 });
+
+function goTo(index, behavior = "smooth") {
+  const next = Math.max(0, Math.min(sections.length - 1, index));
+  current = next;
+  sections[next]?.scrollIntoView({ behavior, block: "start" });
+  rail?.classList.remove("open");
+  links.forEach((link) =>
+    link.classList.toggle("active", link.hash === `#${sections[next].id}`),
+  );
+  if (page) {
+    page.textContent = `${String(next).padStart(2, "0")} / ${String(total).padStart(2, "0")}`;
+  }
+}
+
+function nearestIndex() {
+  const mid = window.scrollY + window.innerHeight * 0.35;
+  let best = 0;
+  let bestDist = Infinity;
+  sections.forEach((section, i) => {
+    const dist = Math.abs(section.offsetTop - mid + section.offsetHeight * 0.2);
+    if (dist < bestDist) {
+      bestDist = dist;
+      best = i;
+    }
+  });
+  return best;
+}
+
+window.addEventListener(
+  "wheel",
+  (event) => {
+    if (event.target.closest(".compare, [data-slider], input, textarea, select"))
+      return;
+    if (Math.abs(event.deltaY) < 18) return;
+    event.preventDefault();
+    if (snapLock) return;
+    snapLock = true;
+    current = nearestIndex();
+    goTo(current + (event.deltaY > 0 ? 1 : -1));
+    window.setTimeout(() => {
+      snapLock = false;
+    }, 780);
+  },
+  { passive: false },
+);
+
+window.addEventListener("keydown", (event) => {
+  if (event.target.closest("input, textarea, select")) return;
+  if (["ArrowDown", "PageDown", " "].includes(event.key)) {
+    event.preventDefault();
+    goTo(nearestIndex() + 1);
+  }
+  if (["ArrowUp", "PageUp"].includes(event.key)) {
+    event.preventDefault();
+    goTo(nearestIndex() - 1);
+  }
+  if (event.key === "Home") goTo(0);
+  if (event.key === "End") goTo(sections.length - 1);
+});
+
+let touchY = 0;
+window.addEventListener(
+  "touchstart",
+  (event) => {
+    touchY = event.touches[0]?.clientY ?? 0;
+  },
+  { passive: true },
+);
+window.addEventListener(
+  "touchend",
+  (event) => {
+    const y = event.changedTouches[0]?.clientY ?? touchY;
+    const delta = touchY - y;
+    if (Math.abs(delta) < 56) return;
+    goTo(nearestIndex() + (delta > 0 ? 1 : -1));
+  },
+  { passive: true },
+);
+
+links.forEach((link) =>
+  link.addEventListener("click", (event) => {
+    const target = document.querySelector(link.hash);
+    const index = target ? sections.indexOf(target) : -1;
+    if (index < 0) return;
+    event.preventDefault();
+    goTo(index);
+  }),
+);

@@ -120,3 +120,29 @@ body.nav-hidden .nav-toggle{left:16px}
 #data .comparison-label{position:absolute;z-index:3;top:16px;padding:8px 12px;border-radius:2px;color:#fff;font-size:10px;font-weight:700;letter-spacing:.04em;box-shadow:0 3px 12px rgba(0,0,0,.2)}
 #data .gps-label{left:16px;background:rgba(25,103,75,.92)}
 #data .degradation-label{right:16px;background:rgba(173,72,40,.92)}
+
+/* ===== Scroll snap + shrink-safe layout ===== */
+html{scroll-snap-type:y mandatory;scroll-padding:0}
+.slide{scroll-snap-align:start;scroll-snap-stop:always;min-height:100dvh;height:auto;overflow-x:hidden;overflow-y:auto;max-width:100%}
+main{max-width:100%;overflow-x:clip}
+.head,.cover-copy,.purpose,.above{max-width:min(920px,100%)}
+.three,.architecture,.scope-grid,.evidence-grid,.modules{max-width:100%}
+@media(max-width:1280px){
+  .three,.architecture.triple{grid-template-columns:1fr 1fr}
+  .architecture.triple .api,.architecture.triple .data{grid-column:1/-1}
+  .journey,#workflow .journey{grid-template-columns:repeat(4,1fr)}
+  .data{grid-template-columns:repeat(3,1fr)}
+}
+@media(max-height:820px){
+  .slide{padding:4.5vh 4vw}
+  .kicker{margin-bottom:1.5vh}
+  .personas article{min-height:0}
+  #data .compare{height:42vh;min-height:280px}
+}
+@media(max-width:1000px){
+  html{scroll-snap-type:y proximity}
+  .slide{min-height:auto}
+  .cover{min-height:100svh}
+  .three,.architecture.triple,.scope-grid{grid-template-columns:1fr}
+}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto;scroll-snap-type:none}}
