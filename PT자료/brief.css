@@ -11,15 +11,15 @@
 /* Compact presentation scale */
 :root{--rail:200px}
 .slide{padding:6.5vh 5.5vw}
-.head{display:block;max-width:920px}
-.head h2{max-width:880px;font-size:clamp(32px,3.35vw,50px);line-height:1.16}
+.head{display:block;max-width:none;width:100%}
+.head h2{max-width:none;font-size:clamp(32px,3.35vw,50px);line-height:1.16}
 .head h2 br{display:none}
-.head>p{max-width:720px;margin-top:16px;font-size:15px;line-height:1.75}
+.head>p{max-width:none;width:100%;margin-top:16px;font-size:15px;line-height:1.75}
 .above h2{font-size:clamp(32px,3.35vw,50px)}
-.cover-copy{padding:14vh 5.5vw 0}
-.cover h1{max-width:820px;font-size:clamp(38px,4.5vw,64px)}
+.cover-copy{padding:14vh 5.5vw 0;max-width:min(1180px,92%);width:100%}
+.cover h1{max-width:min(1100px,100%);font-size:clamp(38px,4.5vw,64px)}
 .cover-copy>p{margin:4.5vh 0 1.5vh}
-.purpose{max-width:780px;margin-top:3.5vh;font-size:12px}
+.purpose{max-width:min(980px,100%);margin-top:3.5vh;font-size:12px}
 .meta{left:5.5vw}
 .definition{margin:5vh 0 3.5vh;padding:21px 0}
 .definition p{font-size:clamp(17px,1.55vw,23px)}
@@ -125,7 +125,9 @@ body.nav-hidden .nav-toggle{left:16px}
 html{scroll-snap-type:y mandatory;scroll-padding:0}
 .slide{scroll-snap-align:start;scroll-snap-stop:always;min-height:100dvh;height:auto;overflow-x:hidden;overflow-y:auto;max-width:100%}
 main{max-width:100%;overflow-x:clip}
-.head,.cover-copy,.purpose,.above{max-width:min(920px,100%)}
+.head,.purpose,.above{max-width:100%}
+.cover-copy{max-width:min(1180px,92%)}
+.head h2,.head>p{max-width:none}
 .three,.architecture,.scope-grid,.evidence-grid,.modules{max-width:100%}
 @media(max-width:1280px){
   .three,.architecture.triple{grid-template-columns:1fr 1fr}
