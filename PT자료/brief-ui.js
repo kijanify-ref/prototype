@@ -45,15 +45,15 @@ if (comparison) {
 
 const journey = document.querySelector("#workflow .journey");
 if (journey) {
+  journey.classList.add("steps-7");
   journey.innerHTML = `
-    <div><b>1</b><span>조사 신청</span><small>고객사</small></div>
-    <div><b>2</b><span>접수·배정</span><small>관리자</small></div>
-    <div><b>3</b><span>현장 조사</span><small>조사원</small></div>
-    <div><b>4</b><span>GPS·증빙</span><small>조사원</small></div>
-    <div><b>5</b><span>제출</span><small>조사원</small></div>
-    <div><b>6</b><span>검수·승인</span><small>관리자</small></div>
-    <div><b>7</b><span>탄소·DDS 처리</span><small>계산·자료 생성</small></div>
-    <div><b>8</b><span>결과 조회</span><small>고객사</small></div>
+    <div><b>01</b><span>조사 신청</span><small>농가·재배지 및 조사 대상 정보 등록</small></div>
+    <div><b>02</b><span>접수·배정</span><small>신청 내용 확인 및 현장 조사 배정</small></div>
+    <div><b>03</b><span>현장 조사</span><small>조사항목 입력 및 농가 현장정보 수집</small></div>
+    <div><b>04</b><span>GPS·증빙 수집</span><small>재배지 위치·경계 및 사진·증빙자료 등록</small></div>
+    <div><b>05</b><span>검수·승인</span><small>제출 데이터 확인 및 승인·반려 처리</small></div>
+    <div><b>06</b><span>탄소·EUDR/DDS 처리</span><small>탄소 산정 및 규제 대응 데이터 검증·자료 생성</small></div>
+    <div><b>07</b><span>결과 제공</span><small>처리 결과 및 관련 보고서 조회·다운로드</small></div>
   `;
 }
 
