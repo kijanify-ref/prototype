@@ -184,40 +184,37 @@ body.nav-hidden .nav-toggle{left:16px}
   line-height:1.55;
 }
 
-#overview .three.duo{
+#overview .audience-board{margin-top:2.4vh}
+#overview .audience-label{margin:0 0 1.4vh;color:var(--green);font-size:11px;font-weight:700;letter-spacing:.14em}
+#overview .three.audience{
   display:grid;
-  grid-template-columns:1fr 1fr;
+  grid-template-columns:repeat(3,minmax(0,1fr));
   gap:14px;
-  margin-top:2.4vh;
+  margin-top:0;
   border:0;
   background:transparent;
 }
-#overview .three.duo article{
+#overview .three.audience article{
   display:flex;
   flex-direction:column;
   gap:10px;
-  min-height:140px;
+  min-height:0;
   padding:20px 20px 18px;
   border:1px solid var(--line);
   background:#fff;
 }
-#overview .three.duo small{
-  color:var(--green);
-  font-size:11px;
-  font-weight:700;
-  letter-spacing:.12em;
-}
-#overview .three.duo h3{
+#overview .three.audience h3{
   margin:0;
-  font-size:18px;
+  font-size:17px;
+  line-height:1.35;
 }
-#overview .three.duo p{
+#overview .three.audience p{
   margin:0;
   max-width:none;
-  color:var(--ink);
-  font-size:15px;
+  color:var(--muted);
+  font-size:14px;
   font-weight:500;
-  line-height:1.65;
+  line-height:1.55;
 }
 
 #overview .head{margin-bottom:0}
@@ -227,7 +224,7 @@ body.nav-hidden .nav-toggle{left:16px}
   #overview .journey.steps-7{grid-template-columns:repeat(4,minmax(0,1fr))}
 }
 @media(max-width:650px){
-  #overview .three.duo,
+  #overview .three.audience,
   #overview .journey.steps-7{grid-template-columns:1fr}
   #overview .journey.steps-7{row-gap:0}
   #overview .journey.steps-7 div{
@@ -257,6 +254,7 @@ main{max-width:100%;overflow-x:clip}
 .three,.architecture,.scope-grid,.evidence-grid,.modules{max-width:100%}
 @media(max-width:1280px){
   .three,.architecture.triple{grid-template-columns:1fr 1fr}
+  #overview .three.audience{grid-template-columns:repeat(3,minmax(0,1fr))}
   .architecture.triple .api,.architecture.triple .data{grid-column:1/-1}
   .journey,#workflow .journey,#overview .journey{grid-template-columns:repeat(4,1fr)}
   #workflow .journey.steps-7,#overview .journey.steps-7{grid-template-columns:repeat(4,1fr)}
